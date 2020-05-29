@@ -12,7 +12,7 @@ const yelpStoreRouter = require("./routes/stores/stores")
 const userRouter = require("./routes/users/users")
 const typeRouter = require("./routes/types/types")
 const postRouter = require ('./routes/posts/posts')
-// const categoryRouter = require('./routes/categories/categories')
+const categoryRouter = require('./routes/categories/categories')
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -31,7 +31,7 @@ app.use("/api/yelp/store", yelpStoreRouter);
 app.use("/api/yelp/user", userRouter);
 app.use("/api/yelp/type", typeRouter);
 app.use("/api/yelp/post", postRouter);
-// app.use("/api/yelp/category", categoryRouter);
+app.use("/api/yelp/category", categoryRouter);
 
 app.listen(PORT, ()=>{
     console.log("listing to Port " , PORT)
