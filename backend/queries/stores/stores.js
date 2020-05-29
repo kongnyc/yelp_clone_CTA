@@ -65,9 +65,8 @@ const createYelpStore = async (req, res, next)=>{
     }
 }
 const deleteYelpStore = async (req, res, next)=>{
-    // res.json("hello")
+
     try {
-        // await db.one(`DELETE FROM Stores WHERE name = ${req.body.name} RETURNING *`)
         let deleteLike = await db.one(`DELETE FROM Stores WHERE name = $1 RETURNING *`,req.body.name);
         res.status(200).json({
             status:'success',
