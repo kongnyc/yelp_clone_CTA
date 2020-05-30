@@ -3,7 +3,6 @@ CREATE DATABASE yelp_clone_db;
 \c yelp_clone_db;
 
 DROP TABLE if EXISTS Stores;
--- DROP TABLE if EXISTS Locations;
 DROP TABLE if EXISTS Types;
 DROP TABLE if EXISTS Categories;
 DROP TABLE if EXISTS Users;
