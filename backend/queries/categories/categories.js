@@ -2,7 +2,7 @@ const db = require ("../../db/index")
 
 const pullStoresById = async (req,res,next)=>{
     try{
-        let storeByID = await db.one(`SELECT * FROM categories WHERE store_id =${req.params.store_id}`)
+        let storeByID = await db.any('SELECT name FROM categories JOIN types ON categories.type_id = types.id WHERE store_id = $1', [req.params.store_id])
         res.status(200).json({
             status: 'success',
             message: 'retrieves categories by Store_ID',
@@ -35,7 +35,7 @@ const pullStoreByType = async (req,res,next)=>{
 
 const createCategories = async (req, res, next)=>{
     try {
-        await db.none('INSERT INTO Categories (store_id, type_id) VALUES(${store_id}, ${type_id})', req.body)
+        await db.none('INSERT INTO categories (store_id, type_id) VALUES($1, $2)', [req.body.store_id, req.body.type_id])
         res.status(200).json({
             status:'success',
             message:'create new categories',
