@@ -8,7 +8,6 @@ const app = express();
 const PORT =process.env.PORT;
 // console.log(require('dotenv').config())
 
-
 const yelpStoreRouter = require("./routes/stores/stores")
 const userRouter = require("./routes/users/users")
 const typeRouter = require("./routes/types/types")
@@ -28,11 +27,24 @@ app.use((err,req,res,next)=>{
     }
 })
 
+
 app.use("/api/yelp/store", yelpStoreRouter);
 app.use("/api/yelp/user", userRouter);
 app.use("/api/yelp/type", typeRouter);
 app.use("/api/yelp/post", postRouter);
 app.use("/api/yelp/category", categoryRouter);
+
+app.get("/", (req, res) => {
+    res.json({
+      pullRequest: "this is a GET"
+    });
+  }); 
+  
+app.post("/", (req, res) => {
+    res.json({
+      pullRequest: "this is a POST"
+    });
+  });
 
 app.listen(PORT, ()=>{
     console.log("listing to Port " , PORT)

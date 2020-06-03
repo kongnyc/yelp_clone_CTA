@@ -1,4 +1,5 @@
-const db = require ("../../db/index")
+// const db = require ("../../db/index")
+const db = require("../../db/index")
 
 const pullStoresById = async (req,res,next)=>{
     try{
@@ -6,7 +7,7 @@ const pullStoresById = async (req,res,next)=>{
         res.status(200).json({
             status: 'success',
             message: 'retrieves store by ID',
-            payload: storeByID
+            payload: storeByID,
         })
     }catch(error){
         res.status(400).json({

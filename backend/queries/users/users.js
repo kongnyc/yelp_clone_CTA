@@ -35,7 +35,7 @@ const pullUserByUsername = async (req,res,next)=>{
 
 const pullUserByEmail = async (req,res,next)=>{
     try{
-        let allUser = await db.any(`SELECT * FROM users WHERE email LIKE '%${req.params.email}%'`)
+        let allUser = await db.any(`SELECT * FROM users WHERE email = ${req.params.email}`)
         res.status(200).json({
             status: 'success',
             message: 'retrieves all username include email',

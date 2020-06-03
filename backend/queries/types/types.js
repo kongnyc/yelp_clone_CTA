@@ -36,7 +36,7 @@ const pullTypeByName = async (req,res,next)=>{
 
 const createType = async (req, res, next)=>{
     try {
-        await db.none('INSERT INTO types (name) VALUES(${name})', req.body.name)
+        await db.none('INSERT INTO types (name) VALUES($1)', req.body.name)
         res.status(200).json({
             status:'success',
             message:'create new type',

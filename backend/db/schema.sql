@@ -26,16 +26,6 @@ CREATE TABLE Categories (
     CONSTRAINT UC_Categor UNIQUE (store_id, type_id)
 );
 
--- CREATE TABLE Locations (
---     id SERIAL PRIMARY KEY,
---     store_id INT REFERENCES Stores(id),
---     street_address VARCHAR(100),
---     apartment_number VARCHAR(20) DEFAULT NULL,
---     city VARCHAR(50),
---     state VARCHAR(10),
---     zip_code VARCHAR(10)
--- );
-
 CREATE TABLE Users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(100) UNIQUE,
@@ -53,14 +43,14 @@ CREATE TABLE Posts (
 );
 
 INSERT INTO Stores (name, address) 
-    VALUES('John pizza', '43-04 National Street Corona, NY 11368'), 
-            ('Wong kitchen', '15-25 Flatbush Ave Flatbush, NY 11210'),
-            ('Red Lobster', '88-01 Queens Blvd Elmhurst NY, 11373'),
-            ('Corona Ice King', '52-02 108th Street Corona, NY 11368'), 
-            ('Chipotle Mexican Grill', '61-35 Junction Blvd Rego Park, NY 11374'), 
-            ('Hamburger Factory', '134-06 Guy R Brewer Blvd Rochdale, NY 11434'), 
-            ('Sushi Village', '3250 Francis Lewis Blvd Auburndale, NY 11358'), 
-            ('Halal Over Rice', '63-75 108th Street Forest Hills, NY 11366');
+    VALUES('john pizza', '43-04 National Street Corona, NY 11368'), 
+            ('wong kitchen', '15-25 Flatbush Ave Flatbush, NY 11210'),
+            ('red lobster', '88-01 Queens Blvd Elmhurst NY, 11373'),
+            ('corona ice king', '52-02 108th Street Corona, NY 11368'), 
+            ('chipotle mexican grill', '61-35 Junction Blvd Rego Park, NY 11374'), 
+            ('hamburger factory', '134-06 Guy R Brewer Blvd Rochdale, NY 11434'), 
+            ('sushi village', '3250 Francis Lewis Blvd Auburndale, NY 11358'), 
+            ('halal over rice', '63-75 108th Street Forest Hills, NY 11366');
 
 INSERT INTO Types (name) 
     VALUES('chinese'),
