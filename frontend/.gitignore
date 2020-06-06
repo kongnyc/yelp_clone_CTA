@@ -5,7 +5,9 @@
 /.pnp
 .pnp.js
 
+
 //api key
+/src/secrets.js
 .env
 
 # testing

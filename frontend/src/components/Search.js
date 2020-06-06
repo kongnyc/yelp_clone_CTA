@@ -1,6 +1,6 @@
 import React,{useEffect} from "react";
 import axios from "axios"
-// require('dotenv').config();
+import API_KEY from "../secrets"
 
 console.log(require('dotenv').config())
 console.log(process.env)
@@ -11,8 +11,7 @@ const location =async ()=>{
     navigator.geolocation.getCurrentPosition(async function (position) {
         console.log(process.env)
         // console.log(process.env.REACT_APP_GOOGLE_API_KEY)
-        let res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=AIzaSyD0kOEp37YEmSqB5ckr4cOT9v1_p471HpU`)
-        debugger
+        let res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=${API_KEY}`)
       });
     }
 
