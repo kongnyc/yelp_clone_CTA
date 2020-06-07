@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import "../css/Header.css"
 
 const Header =()=> {
+
+
+  // if(sessionStorage.login){
+
+  // }
+
         return (
             <div className="header">
 
@@ -9,7 +15,8 @@ const Header =()=> {
     
                 <ul className="box">
                   <li className="login"><a href="/login/">Log In</a></li>
-                  <li className="login"><a href="/signup/">Sign Up</a></li>
+                  <li className="login"><a href="/signup/">User Sign Up</a></li>
+                  <li className="businessLogin"><a href="/business/">Business Sign Up</a></li>
                 </ul>
             </div>
         )
