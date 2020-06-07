@@ -3,11 +3,6 @@ import "../css/Header.css"
 
 const Header =()=> {
 
-
-  // if(sessionStorage.login){
-
-  // }
-
         return (
             <div className="header">
 

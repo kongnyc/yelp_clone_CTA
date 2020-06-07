@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Comment from "./Comment"
 
 const Display =({category,store})=> {
 
@@ -26,6 +27,7 @@ const Display =({category,store})=> {
             <div>
                 {nameDisplay()}
                 {detailDisplay()}
+                <Comment id={store.id}/>
             </div>
         )
     }
