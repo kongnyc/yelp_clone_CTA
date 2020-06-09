@@ -27,7 +27,6 @@ app.use((err,req,res,next)=>{
     }
 })
 
-
 app.use("/api/yelp/store", yelpStoreRouter);
 app.use("/api/yelp/user", userRouter);
 app.use("/api/yelp/type", typeRouter);
@@ -38,7 +37,7 @@ app.get("/", (req, res) => {
     res.json({
       pullRequest: "this is a GET"
     });
-  }); 
+}); 
   
 app.post("/", (req, res) => {
     res.json({

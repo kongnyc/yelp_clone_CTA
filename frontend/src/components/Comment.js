@@ -43,10 +43,12 @@ const fetchData = async(url)=>{
             <form className="commentForm" onSubmit={addPost}>
 
             <div>
+            <p>Name</p>
             <input placeholder="Name" required/>
             </div>
  
             <div>
+            <p>Comment</p>
             <input placeholder="..." required/>
             </div>
 

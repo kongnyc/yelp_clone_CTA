@@ -1,4 +1,3 @@
-// const db = require ("../../db/index")
 const db = require("../../db/index")
 
 const pullStoresById = async (req,res,next)=>{
@@ -6,8 +5,8 @@ const pullStoresById = async (req,res,next)=>{
         let storeByID = await db.one(`SELECT * FROM stores WHERE id =${req.params.id}`)
         res.status(200).json({
             status: 'success',
-            message: 'retrieves store by ID',
             payload: storeByID,
+            message: 'retrieves store by ID'
         })
     }catch(error){
         res.status(400).json({
@@ -19,7 +18,7 @@ const pullStoresById = async (req,res,next)=>{
 
 const pullStoresByName = async (req,res,next)=>{
     try{
-        let allStore = await db.any(`SELECT * FROM stores WHERE name LIKE '%${req.params.name}%'`)
+        let allStore = await db.any(`SELECT DISTINCT stores.id, stores.name, address FROM categories LEFT JOIN types ON categories.type_id = types.id RIGHT JOIN stores ON stores.id = store_id WHERE types.name LIKE '%${req.params.name}%' OR stores.name LIKE '%${req.params.name}%'`)
         res.status(200).json({
             status: 'success',
             message: 'retrieves all Store include search',
@@ -28,6 +27,7 @@ const pullStoresByName = async (req,res,next)=>{
     }catch(error){
         res.status(400).json({
             status: error,
+            params:req.params.name,
             message: 'could not retrieve store that include search'
         })
     }

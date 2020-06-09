@@ -32,7 +32,6 @@ const pullStoreByType = async (req,res,next)=>{
     }
 }
 
-
 const createCategories = async (req, res, next)=>{
     try {
         await db.none('INSERT INTO categories (store_id, type_id) VALUES($1, $2)', [req.body.store_id, req.body.type_id])

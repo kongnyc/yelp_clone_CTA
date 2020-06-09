@@ -2,12 +2,12 @@ const db = require ("../../db/index")
 
 const pullStoresById = async (req,res,next)=>{
     try{
-        let storeByID = await db.any(`SELECT * FROM posts WHERE store_id = 1 ORDER BY time_stamp DESC`, req.params.store_id);
+        let storeByID = await db.any(`SELECT posts.id, posts.user_id, users.username, posts.content, posts.time_stamp FROM posts JOIN users ON posts.user_id = users.id WHERE store_id = ${req.params.store_id} ORDER BY time_stamp DESC`);
         // let storeByID = await db.any(`SELECT * FROM posts WHERE store_id = $1 RETURNING *`, [res.params.store_id]);
         res.status(200).json({
             status: 'success',
+            payload: storeByID,
             message: 'retrieves post by Store_ID',
-            payload: storeByID
         })
     }catch(error){
         res.status(400).json({
