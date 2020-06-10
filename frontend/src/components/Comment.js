@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react'
 import {useParams} from "react-router-dom"
 import History from "./History"
 import axios from "axios"
+import {getAPI} from "../util/util"
 
 const Comment =()=> {
+
+    const API = getAPI();
     let { store_id } = useParams();
 
     const [post, setPost]=useState([])
@@ -32,7 +35,7 @@ const fetchData = async(url)=>{
 
     useEffect(()=>{
     
-        fetchData(`http://localhost:3001/api/yelp/post/${store_id}`)
+        fetchData(`${API}/api/yelp/post/${store_id}`)
     }, [])
         
     console.log(list)

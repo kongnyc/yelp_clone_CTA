@@ -1,9 +1,15 @@
 import React from 'react'
+import {useHistory} from "react-router-dom"
+
 
 const List =({name,address,store_id})=> {
+    const history = useHistory()
+
 
 const handleClick =()=>{
-        window.location=`http://localhost:3000/store/${store_id}`
+    history.push(`/store/${store_id}`)
+
+        // window.location=`http://localhost:3000/store/${store_id}`
     }
 
     return (

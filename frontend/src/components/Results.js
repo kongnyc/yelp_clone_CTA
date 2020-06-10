@@ -1,27 +1,36 @@
 import React,{useEffect, useState} from "react";
 import axios from "axios"
 import List from "./List"
+import {getAPI} from "../util/util"
+
 
 const Result = () => {
-
+  
+const API = getAPI();
 const [list, setList] = useState([])
 
 const fetchData = async(url)=>{
-    try {
+  console.log(url)
+  try {
     let res= await axios.get(url)
-    res.data.payload.map((el)=>{
-            setList(prevState=>[...prevState,{id:el.id, name:el.name, address:el.address}])
-        })
+    // debugger
+    // res.data.payload.map((el)=>{
+            // setList(prevState=>[...prevState,{id:el.id, name:el.name, address:el.address}])
+            setList(prevState=>[...prevState, ...res.data.payload])
+        // })
     } catch (error) {
         console.log(error)
     }
 }
 const ShowResultList =list.map((list)=>{
    
-    return(<><List key={list.id} store_id={list.id} name={list.name} address={list.address}/></>)
+    return(<List key={list.id} store_id={list.id} name={list.name} address={list.address}/>)
  })
+
     useEffect(()=>{
-        fetchData(`http://localhost:3001/api/yelp/store/name/${sessionStorage.searchTerm}`)
+      console.log(sessionStorage)
+
+        fetchData(`${API}/api/yelp/store/name/${sessionStorage.searchTerm}`)
     }, [])
     
 const handleLogOut=()=>{
@@ -29,9 +38,10 @@ const handleLogOut=()=>{
         sessionStorage.removeItem("searchTerm")
         sessionStorage.removeItem("address")
 }
-    
-  return <div>
-  <button className="login" onClick={handleLogOut} ><a href="/">Back to Home</a></button>
+    //change a href into link
+  return (
+  <div>
+  <button className="home" onClick={handleLogOut} ><a href="/">Back to Home</a></button>
   <h1>Result page</h1>
   <p>
     search for : {sessionStorage.searchTerm} near: {sessionStorage.address}
@@ -42,7 +52,7 @@ const handleLogOut=()=>{
         {ShowResultList}
     </div>
 
-  </div>;
+  </div>);
 };
 
 export default Result;

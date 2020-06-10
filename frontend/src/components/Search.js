@@ -2,11 +2,15 @@ import React,{useEffect,useState} from "react";
 import axios from "axios"
 import API_KEY from "../secrets"
 import {useInput} from "../util/useInput"
+import {useHistory} from "react-router-dom"
+
 
 const Search = () => {
+
     const [defaultAddress, setAddress] = useState("null")
     let searchObj = useInput("")
     let nearLocationObj = useInput("")
+    const history = useHistory()
 
 const location = () =>{
 
@@ -18,14 +22,14 @@ const location = () =>{
 
 
 const handleSearch=(e)=>{
-    e.preventDefault() 
-    window.location="../results"
-    sessionStorage.searchTerm=e.target.elements[0].value
-    if(e.target.elements.nearLocation.value.length>1){
-        sessionStorage.address=e.target.elements.nearLocation.value
-    }else{
-        sessionStorage.address=defaultAddress
-    }
+  e.preventDefault() 
+  sessionStorage.searchTerm=e.target.elements[0].value
+  if(e.target.elements.nearLocation.value.length>1){
+      sessionStorage.address=e.target.elements.nearLocation.value
+  }else{
+      sessionStorage.address=defaultAddress
+  }
+  history.push("/results")
 }
 
 
@@ -40,7 +44,7 @@ const handleSearch=(e)=>{
       <input type="text" placeholder="search for store, takeout, business" name="searchTerm" {...searchObj}/>
     <label>Near</label>
       <input type="text" placeholder={defaultAddress} name="nearLocation" {...nearLocationObj}/>
-      <button>...</button>
+      <button>Search</button>
   </form>
 
   ) 
