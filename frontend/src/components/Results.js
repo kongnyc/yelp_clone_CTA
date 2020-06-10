@@ -10,33 +10,27 @@ const API = getAPI();
 const [list, setList] = useState([])
 
 const fetchData = async(url)=>{
-  console.log(url)
-  try {
-    let res= await axios.get(url)
-    // debugger
-    // res.data.payload.map((el)=>{
-            // setList(prevState=>[...prevState,{id:el.id, name:el.name, address:el.address}])
-            setList(prevState=>[...prevState, ...res.data.payload])
-        // })
-    } catch (error) {
-        console.log(error)
-    }
+  // console.log(url)
+try {
+  let res= await axios.get(url)
+    setList(prevState=>[...prevState, ...res.data.payload])
+} catch (error) {
+    console.log(error)
+  }
 }
 const ShowResultList =list.map((list)=>{
    
-    return(<List key={list.id} store_id={list.id} name={list.name} address={list.address}/>)
- })
+  return(<List key={list.id} store_id={list.id} name={list.name} address={list.address}/>)
+})
 
-    useEffect(()=>{
-      console.log(sessionStorage)
+useEffect(()=>{
 
-        fetchData(`${API}/api/yelp/store/name/${sessionStorage.searchTerm}`)
-    }, [])
+  fetchData(`${API}/api/yelp/store/name/${sessionStorage.searchTerm}`)
+}, [])
     
 const handleLogOut=()=>{
-        console.log("log out")
-        sessionStorage.removeItem("searchTerm")
-        sessionStorage.removeItem("address")
+  sessionStorage.removeItem("searchTerm")
+  sessionStorage.removeItem("address")
 }
     //change a href into link
   return (

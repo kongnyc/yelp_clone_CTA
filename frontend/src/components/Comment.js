@@ -2,12 +2,19 @@ import React, { useState, useEffect } from 'react'
 import {useParams} from "react-router-dom"
 import History from "./History"
 import axios from "axios"
+import {useInput} from "../util/useInput"
 import {getAPI} from "../util/util"
+
 
 const Comment =()=> {
 
     const API = getAPI();
     let { store_id } = useParams();
+    let userObj = useInput("")
+    let passwordObj = useInput("")
+
+    let [user_id, setId]=useState("")
+    let contentObj = useInput("")
 
     const [post, setPost]=useState([])
     const [list, setList]=useState([])
@@ -15,55 +22,62 @@ const Comment =()=> {
 const fetchData = async(url)=>{
     try {
         let res= await axios.get(url)
-        res.data.payload.map((el)=>{
-                setList(prevState=>[...prevState,{post_id:el.id, user_id:el.user_id, username:el.username, content:el.content, time:el.time_stamp}])
-            })
+        // debugger
+        // res.data.payload.map((el)=>{
+                setList(prevState=>[...prevState, ...res.data.payload])
+            // })
         } catch (error) {
             console.log(error)
         }
 }
     
-    const addPost=(e)=>{
+    const addPost= async(e)=>{
         e.preventDefault()
         e.persist()
-        if(!post){
-            setPost({name : e.target.elements[0].value, comment:e.target.elements[1].value})
-        }else{
-            // setPost(history=>[...history,{name : e.target.elements[0].value, comment: e.target.elements[1].value}])
-        }
+        let body = {user_id: user_id, store_id: store_id, content: contentObj.value, }
+        await axios.post(`${API}/api/yelp/post/`, body)
     }
 
     useEffect(()=>{
-    
         fetchData(`${API}/api/yelp/post/${store_id}`)
     }, [])
+
+    const loginCheck = ()=>{
+    //    debugger
+        if(user_id){
+            return (
+            <form className="commentForm" onSubmit={addPost}>
+            <label>Username</label> 
+            <p>{userObj.value}</p>
+            {/* <input placeholder="Name" name="user_id" {...user_idObj} required/> */}
+            <label>Comment</label>
+            <input placeholder="..." name="content" {...contentObj} required />
+            <button type="Submit">Submit</button> 
+            </form>
+            )
+        } else {
+            return (
+                <form onSubmit={handleLogin}>
+                    <label>Account</label>
+                    <input placeholder="Username" name="Username" {...userObj} required/>
+                    <label>Password</label>
+                     <input type="password" placeholder="password" name="password"  minLength="8" {...passwordObj} required />
+                    <button type="Submit">Login</button> 
+                </form>
+            )
+        }
+    }
+
+    const handleLogin =async(e)=>{
+        debugger
+        return  null
+    }
         
-    console.log(list)
+    // console.log(list)
         return (
             <div className="commentSection">
             <History history={list}/>
-
-            <form className="commentForm" onSubmit={addPost}>
-
-            <div>
-            <p>Name</p>
-            <input placeholder="Name" required/>
-            </div>
- 
-            <div>
-            <p>Comment</p>
-            <input placeholder="..." required/>
-            </div>
-
-            <div>
-            <button type="Submit">Submit</button> 
-            </div>
-
-            <div className="PostedComment">
-            </div>
-
-            </form>
-            
+            {loginCheck()}
             </div>
         )
     }

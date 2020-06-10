@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/kongnyc/yelp_clone_CTA/issues"
   },
-  "homepage": "https://github.com/kongnyc/yelp_clone_CTA#readme"
+  "homepage": "https://github.com/kongnyc/yelp_clone_CTA#readme",
+  "dependencies": {
+    "backend": "file:backend"
+  }
 }
