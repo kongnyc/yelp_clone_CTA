@@ -18,17 +18,17 @@ const pullUserById = async (req,res,next)=>{
 
 const pullUserByUsername = async (req,res,next)=>{
     try{
-        let user = await db.one(`SELECT * FROM users WHERE username = '${req.params.username}'`)
+        let user = await db.one('SELECT id, username FROM users WHERE username = ${username} AND password= ${password}', req.body)
         res.status(200).json({
             status: 'success',
-            message: 'retrieves username include search',
-            payload: user
+            payload: user,
+            message: 'retrieves id and username search'
         })
 
     }catch(error){
         res.status(400).json({
             status: error,
-            message: 'could not retrieve username that include search'
+            message: 'could not retrieve user'
         })
     }
 }
