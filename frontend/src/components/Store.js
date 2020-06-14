@@ -18,8 +18,8 @@ const fetchData = async(url, setData)=>{
         console.log(error)
     }
 }
-console.log(category)
-console.log(store)
+// console.log(category)
+// console.log(store)
 
 useEffect(()=>{
         fetchData(`${API}/api/yelp/store/${store_id}`, setStore)

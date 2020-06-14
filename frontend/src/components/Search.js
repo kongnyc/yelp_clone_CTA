@@ -16,7 +16,7 @@ const location = () =>{
 
     navigator.geolocation.getCurrentPosition(async function (position) {
         let res = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=${API_KEY}`)
-        setAddress(res.data.results[3].formatted_address)
+        setAddress(res.data.results[7].formatted_address)
       });
 }
 

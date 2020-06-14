@@ -8,7 +8,6 @@ const List =({name,address,store_id})=> {
 
 const handleClick =()=>{
     history.push(`/store/${store_id}`)
-
         // window.location=`http://localhost:3000/store/${store_id}`
     }
 

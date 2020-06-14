@@ -5,7 +5,6 @@ import axios from "axios"
 import {useInput} from "../util/useInput"
 import {getAPI} from "../util/util"
 
-
 const Comment =()=> {
 
     const API = getAPI();
@@ -13,10 +12,10 @@ const Comment =()=> {
     let userObj = useInput("")
     let passwordObj = useInput("")
 
-    let [user_id, setId]=useState("")
+    let [user_id, setId]=useState("") //user_id
     let contentObj = useInput("")
 
-    const [post, setPost]=useState([])
+    // const [post, setPost]=useState([])
     const [list, setList]=useState([])
 
 const fetchData = async(url)=>{
@@ -31,19 +30,27 @@ const fetchData = async(url)=>{
         }
 }
     
-    const addPost= async(e)=>{
+const addPost= async(e)=>{
         e.preventDefault()
         e.persist()
-        let body = {user_id: user_id, store_id: store_id, content: contentObj.value, }
+        let body = {user_id: user_id, store_id: store_id, content: contentObj.value }
         await axios.post(`${API}/api/yelp/post/`, body)
     }
 
-    useEffect(()=>{
+useEffect(()=>{
         fetchData(`${API}/api/yelp/post/${store_id}`)
     }, [])
 
+const handleLogin= async(e)=>{
+        e.preventDefault();
+        e.persist();
+        let body = {username:e.target.username.value, password:e.target.password.value};
+        let res = await axios.get(`${API}/api/yelp/user/name/`, body);
+        debugger
+        //         setId(res.data.payload.id)
+    }
+
     const loginCheck = ()=>{
-    //    debugger
         if(user_id){
             return (
             <form className="commentForm" onSubmit={addPost}>
@@ -57,10 +64,10 @@ const fetchData = async(url)=>{
             )
         } else {
             return (
-                <form onSubmit={handleLogin}>
-                    <label>Account</label>
-                    <input placeholder="Username" name="Username" {...userObj} required/>
-                    <label>Password</label>
+                <form className="loginForm" onSubmit={handleLogin}>
+                    <label>Account: </label>
+                    <input placeholder="username" name="username" {...userObj} required/>
+                    <label>Password: </label>
                      <input type="password" placeholder="password" name="password"  minLength="8" {...passwordObj} required />
                     <button type="Submit">Login</button> 
                 </form>
@@ -68,12 +75,8 @@ const fetchData = async(url)=>{
         }
     }
 
-    const handleLogin =async(e)=>{
-        debugger
-        return  null
-    }
         
-    // console.log(list)
+    console.log(user_id)
         return (
             <div className="commentSection">
             <History history={list}/>

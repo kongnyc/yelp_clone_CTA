@@ -4,6 +4,8 @@ import Header from "./components/Header"
 import Search from "./components/Search"
 import Result from "./components/Results"
 import Store from "./components/Store"
+import Signup from "./components/Signup"
+import Business from "./components/Business"
 
 
 function App() {
@@ -12,6 +14,8 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={Search} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/business" component={Business} />
         <Route exact path="/results" component={Result} />
         <Route exact path="/store/:store_id" component={Store} />
       </Switch>
