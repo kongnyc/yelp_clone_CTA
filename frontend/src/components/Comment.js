@@ -4,18 +4,19 @@ import History from "./History"
 import axios from "axios"
 import {useInput} from "../util/useInput"
 import {getAPI} from "../util/util"
+import {useHistory} from "react-router-dom"
+
 
 const Comment =()=> {
 
     const API = getAPI();
+    const history = useHistory()
     let { store_id } = useParams();
     let userObj = useInput("")
     let passwordObj = useInput("")
 
     let [user_id, setId]=useState("") //user_id
     let contentObj = useInput("")
-
-    // const [post, setPost]=useState([])
     const [list, setList]=useState([])
 
 const fetchData = async(url)=>{
@@ -44,18 +45,24 @@ useEffect(()=>{
 const handleLogin= async(e)=>{
         e.preventDefault();
         e.persist();
-        let body = {username:e.target.username.value, password:e.target.password.value};
-        let res = await axios.get(`${API}/api/yelp/user/name/`, body);
-        debugger
-        //         setId(res.data.payload.id)
+        let res = await axios.get(`http://localhost:3001/api/yelp/user/name/${e.target.username.value}`);
+        if(e.target.username.value === res.data.payload.username && e.target.password.value === res.data.payload.password) {
+            // debugger
+            setId(res.data.payload.id)
+            // setTimeout(function() {
+            //      history.push("/")
+            // },3000) 
+        }  
+        else {
+            return (alert("Credentials not entered or you don't exist. Please head over to our sign up page."))
+        }
     }
 
     const loginCheck = ()=>{
         if(user_id){
             return (
             <form className="commentForm" onSubmit={addPost}>
-            <label>Username</label> 
-            <p>{userObj.value}</p>
+            <label>user logged in as {userObj.value} </label> 
             {/* <input placeholder="Name" name="user_id" {...user_idObj} required/> */}
             <label>Comment</label>
             <input placeholder="..." name="content" {...contentObj} required />
