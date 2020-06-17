@@ -18,7 +18,8 @@ const pullUserById = async (req,res,next)=>{
 
 const pullUserByUsername = async (req,res,next)=>{
     try{
-        let user = await db.one('SELECT id, username FROM users WHERE username = ${username} AND password= ${password}', req.body)
+        // let user = await db.one('SELECT id, username FROM users WHERE username = ${username} AND password= ${password}', req.body)
+        let user = await db.one('SELECT * FROM users WHERE username = $1', [req.params.username])
         res.status(200).json({
             status: 'success',
             payload: user,
@@ -28,23 +29,24 @@ const pullUserByUsername = async (req,res,next)=>{
     }catch(error){
         res.status(400).json({
             status: error,
-            message: 'could not retrieve user'
+            params:req.params.username,
+            message: 'could not retrieve username by name and password'
         })
     }
 }
 
 const pullUserByEmail = async (req,res,next)=>{
     try{
-        let allUser = await db.any(`SELECT * FROM users WHERE email = ${req.params.email}`)
+        let allUser = await db.one(`SELECT * FROM users WHERE email = ${req.params.email} AND password = $1`,[req.body.password])
         res.status(200).json({
             status: 'success',
-            message: 'retrieves all username include email',
+            message: 'retrieves username include email',
             payload: allUser
         })
     }catch(error){
         res.status(400).json({
             status: error,
-            message: 'could not retrieve username that include email'
+            message: 'could not retrieve username by email'
         })
     }
 }
