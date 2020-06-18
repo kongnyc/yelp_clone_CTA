@@ -16,13 +16,13 @@ const Business = () => {
           name: name.value,
           address: address.value
         });
-        debugger
+        // debugger
       }
         
           return(
               <div className="signUp">
                   <nav>
-                      <NavLink className="home" exact to={"/"}>Home</NavLink>
+                      <NavLink className="home" exact to={"/"}>Back Home</NavLink>
                   </nav>
                   <div className="mainPage">
                       <h3>Business Sign Up</h3>

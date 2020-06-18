@@ -15,7 +15,7 @@ const Comment =()=> {
     let userObj = useInput("")
     let passwordObj = useInput("")
 
-    let [user_id, setId]=useState("") //user_id
+    let [user_id, setId]=useState(sessionStorage.userLogin) //user_id
     let contentObj = useInput("")
     const [list, setList]=useState([])
 
@@ -35,6 +35,7 @@ const addPost= async(e)=>{
         e.preventDefault()
         e.persist()
         let body = {user_id: user_id, store_id: store_id, content: contentObj.value }
+        // debugger
         await axios.post(`${API}/api/yelp/post/`, body)
     }
 
@@ -47,24 +48,22 @@ const handleLogin= async(e)=>{
         e.persist();
         let res = await axios.get(`http://localhost:3001/api/yelp/user/name/${e.target.username.value}`);
         if(e.target.username.value === res.data.payload.username && e.target.password.value === res.data.payload.password) {
-            // debugger
+            sessionStorage.userLogin=(res.data.payload.id)
+            sessionStorage.userName=(res.data.payload.username)
             setId(res.data.payload.id)
-            // setTimeout(function() {
-            //      history.push("/")
-            // },3000) 
         }  
         else {
             return (alert("Credentials not entered or you don't exist. Please head over to our sign up page."))
         }
-    }
+}
 
     const loginCheck = ()=>{
         if(user_id){
             return (
             <form className="commentForm" onSubmit={addPost}>
-            <label>user logged in as {userObj.value} </label> 
+            <label>user logged in as {sessionStorage.userName}, </label> 
             {/* <input placeholder="Name" name="user_id" {...user_idObj} required/> */}
-            <label>Comment</label>
+            <label>Comment: </label>
             <input placeholder="..." name="content" {...contentObj} required />
             <button type="Submit">Submit</button> 
             </form>

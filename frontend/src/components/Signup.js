@@ -21,12 +21,11 @@ const SignUp = () => {
     });
     
     if(newUser.data.status==="success"){
-      sessionStorage.loginedUser=newUser.data.payload.id
-      setTimeout(function() {
-          window.location = "../homepage";
-      },1000) 
+      sessionStorage.userLogin=(newUser.data.payload.id);
+      sessionStorage.userName=(newUser.data.payload.username)
+
     }else{
-          debugger
+
         alert(newUser.data.status)
     }
   }
@@ -34,7 +33,7 @@ const SignUp = () => {
       return(
           <div className="signUp">
               <nav>
-                  <NavLink className="home" exact to={"/"}>Home</NavLink>
+                  <NavLink className="home" exact to={"/"}>Back Home</NavLink>
               </nav>
               <div className="mainPage">
                   <h3>Sign Up</h3>

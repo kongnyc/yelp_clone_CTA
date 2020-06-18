@@ -31,6 +31,7 @@ useEffect(()=>{
 const handleLogOut=()=>{
   sessionStorage.removeItem("searchTerm")
   sessionStorage.removeItem("address")
+
 }
     //change a href into link
   return (
