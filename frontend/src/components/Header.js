@@ -9,7 +9,6 @@ const Header =()=> {
 const history = useHistory()
 const [userLogin, setLogin] = useState(sessionStorage.userLogin)
 
-
   const loginCheck = ()=>{
     if(userLogin){
         return (
@@ -18,7 +17,7 @@ const [userLogin, setLogin] = useState(sessionStorage.userLogin)
         <button onClick={handleLogOut}>Log Out</button>
         </>
         )
-        
+
     } else {
         return (
             <ul className="box">
@@ -29,6 +28,9 @@ const [userLogin, setLogin] = useState(sessionStorage.userLogin)
         )
     }
 }
+// useEffect(()=>{
+//     loginCheck()
+//   }, [])
 
     const handleLogOut=()=>{
         history.replace=(null, "/")

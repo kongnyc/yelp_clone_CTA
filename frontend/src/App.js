@@ -7,12 +7,13 @@ import Store from "./components/Store"
 import Signup from "./components/Signup"
 import Business from "./components/Business"
 import Login from "./components/Login"
-
+import "./css/Content.css"
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <div className="content">
       <Switch>
         <Route exact path="/" component={Search} />
         <Route exact path="/login" component={Login} />
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/results" component={Result} />
         <Route exact path="/store/:store_id" component={Store} />
       </Switch>
+      </div>
     </div>
   );
 }
