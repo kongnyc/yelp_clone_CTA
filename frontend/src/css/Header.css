@@ -2,14 +2,25 @@
     position: fixed;
     top: 0;
     width: 100%;
-    overflow: hidden;
-}
-.box{
     border: solid black;
 }
-.login{
-    border: solid black;
+
+.logo{
+    height: 15%;
+    width: 20%;
+    align-items: center;
 }
-.sign{
-    border: solid black;
+
+.linkBtn{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    float: right;
+    flex-direction: column;
+    font-family: sans-serif;
+    font-weight: bold;
+    justify-content: space-between;
+    align-items: flex-end;
+    list-style: none;
 }
