@@ -12,10 +12,10 @@ const [userLogin, setLogin] = useState(sessionStorage.userLogin)
   const loginCheck = ()=>{
     if(userLogin){
         return (
-        <>
+        <div className="welcome">
         <label>Welcome: {sessionStorage.userName} </label> 
         <button onClick={handleLogOut}>Log Out</button>
-        </>
+        </div>
         )
 
     } else {
@@ -41,8 +41,7 @@ const [userLogin, setLogin] = useState(sessionStorage.userLogin)
 
         return (
             <div className="header">
-            
-            <img className="logo" src="https://images.squarespace-cdn.com/content/v1/5b2424ad266c07b94eab58ee/1536675878312-M9F797DGCA2DWEIOL248/ke17ZwdGBToddI8pDm48kHyVHa5xa_3FTr0ohEyBrNVZw-zPPgdn4jUwVcJE1ZvWhcwhEtWJXoshNdA9f1qD7TNdqww6z_61iXx7yO_mnkqr9QvTuVKJiB1R_XE5p9s9p_nV8m35JPLFe4dXvYPk4A/yelp+logo.png" alt="logo"></img>
+            {/* <img className="logo" src="https://images.squarespace-cdn.com/content/v1/5b2424ad266c07b94eab58ee/1536675878312-M9F797DGCA2DWEIOL248/ke17ZwdGBToddI8pDm48kHyVHa5xa_3FTr0ohEyBrNVZw-zPPgdn4jUwVcJE1ZvWhcwhEtWJXoshNdA9f1qD7TNdqww6z_61iXx7yO_mnkqr9QvTuVKJiB1R_XE5p9s9p_nV8m35JPLFe4dXvYPk4A/yelp+logo.png" alt="logo"></img> */}
             {loginCheck()}
             </div>
         )
