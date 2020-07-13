@@ -22,7 +22,7 @@ const [userLogin, setLogin] = useState(sessionStorage.userLogin)
         return (
             <ul className="linkBtn">
                   <li className="login"><a href="/login/">Log In</a></li>
-                  <li className="login"><a href="/signup/">Sign Up</a></li>
+                  <li className="login2"><a href="/signup/">Sign Up</a></li>
                   <li className="businessLogin"><a href="/business/">Store Sign Up</a></li>
             </ul> 
         )

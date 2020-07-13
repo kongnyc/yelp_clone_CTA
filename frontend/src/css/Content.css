@@ -1,8 +1,12 @@
 .content {
-    margin-top:170px;
-    padding: 16px;
-  }
-
-.content {
-    padding-top: 102px;
+  height: 1000px;
+  width: 100%;
+  background-image: url('../assets/background5.jpg');
+  background-color: black;
+  color: white;
+  background-position: 95% 50%;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+  margin-top:19%;
+  padding: 16px;
   }
