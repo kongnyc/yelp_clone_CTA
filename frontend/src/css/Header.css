@@ -3,7 +3,6 @@
     top: 0;
     width: 100%;
     height: 20%;
-    /* border: solid black; */
     background-image: url('../assets/food\ philosophy\ header.png');
     background-color: black;
     background-position: 85% 50%;
@@ -19,7 +18,6 @@
     font-weight: bold;
     align-items: flex-end;
     list-style: none;
-
 }
 
 .linkBtn >li{
