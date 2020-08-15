@@ -1,10 +1,17 @@
-.content {
+
+body {
+  position: absolute;
   background-image: url(/static/media/background5.48633b02.jpg);
+  /* background-image:url(../assets/photodune-6761938-food-background-on-dark-slate-m1.jpg); */
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100%;
+  background-size: 100% 100%;
   width: 100%;
-  min-height: 500px;
+  min-height: 30em;
   height: 100%;
+  color: white;
+  }
+
+.content {
   text-align: center;
   }
