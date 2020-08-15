@@ -1,12 +1,12 @@
 .content {
   width: 100%;
+  height: 100%;
   background-image: url('../assets/background5.jpg');
-  background-color: black;
+  background-position: 60% 90%;
   color: white;
   background-position: 95% 50%;
   background-attachment: scroll;
   background-repeat: no-repeat;
-  padding: solid pink 1px;
-  display: block;
-  margin-top: 13%;
+  /* padding: solid red 100px; */
+  /* display: block; */
   }

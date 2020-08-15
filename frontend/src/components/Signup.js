@@ -35,7 +35,7 @@ const SignUp = () => {
               <nav>
                   <NavLink className="home" exact to={"/"}>Back Home</NavLink>
               </nav>
-              <div className="mainPage">
+              <div className="mainPage" style={{textAlign:"center"}}>
                   <h3>Sign Up</h3>
                   <form className="signUpForm" onSubmit={handleNewUser} >
                         <label>Username: </label>

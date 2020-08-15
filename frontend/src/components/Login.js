@@ -34,7 +34,8 @@ const Login =()=> {
              <nav>
                   <NavLink className="home" exact to={"/"}>back to Home</NavLink>
               </nav>
-              <form className="loginForm" onSubmit={handleVerification}>
+              <form style={{textAlign:"center"}} className="loginForm" onSubmit={handleVerification}>
+                    <h3>User Login Page</h3>
                     <label>Account: </label>
                     <input placeholder="username" name="username" {...userObj} required/>
                     <label>Password: </label>
