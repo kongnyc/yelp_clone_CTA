@@ -36,14 +36,14 @@ const handleLogOut=()=>{
     //change a href into link
   return (
   <div>
-  <button className="home" onClick={handleLogOut} ><a href="/">Back to Home</a></button>
+  <button className="homeBtn" onClick={handleLogOut} ><a className="span" href="/">Home</a></button>
   <h1>Result page</h1>
   <p>
-    search for : {sessionStorage.searchTerm} near: {sessionStorage.address}
+    Search for: {sessionStorage.searchTerm.toLowerCase()} Near: {sessionStorage.address}
   </p>
 
     <div className="result">
-        <h1>List Below</h1>
+        <h3 style={{'font-weight':"900"}}>List Below</h3>
         {ShowResultList}
     </div>
 

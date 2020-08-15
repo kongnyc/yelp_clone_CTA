@@ -41,11 +41,14 @@ const handleSearch=(e)=>{
    
   return ( 
   <form onSubmit={handleSearch}>
-    <label>Find</label>
-      <input type="text" placeholder="search for store, takeout, business" name="searchTerm" {...searchObj}/>
-    <label>Near</label>
-      <input type="text" placeholder={defaultAddress} name="nearLocation" {...nearLocationObj}/>
-      <button>Search</button>
+    <h1>Welcome to Home Page</h1>
+    <div className="searchInput">
+    <label className="searchInput-item">Find</label>
+      <input className="searchInput-item-input" type="text" placeholder="restaurant, takeout, store..." name="searchTerm" {...searchObj}/>
+    <label className="searchInput-item">Near</label>
+      <input className="searchInput-item-input" type="text" placeholder={defaultAddress} name="nearLocation" {...nearLocationObj}/>
+      <button className="searchInput-item">Search</button>
+    </div>
   </form>
 
   ) 

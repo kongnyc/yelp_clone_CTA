@@ -10,8 +10,84 @@ body {
   min-height: 30em;
   height: 100%;
   color: white;
+  font-family: "Candal", sans-serif;
+  font-weight: lighter;
+  font-size: 13pt;
+  height:auto
   }
 
 .content {
   text-align: center;
+  margin-top: 1em;
   }
+
+.searchInput{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.searchInput-item{
+  margin: 2px;
+  flex: 0 0 2%;
+}
+.searchInput-item-input{
+  width: 15%;
+}
+
+/* button{
+  display: inline-block;
+  background-color: #ff3535;
+  border: none;
+  color:#00838F;
+  text-decoration: none;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 16px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+button >a{
+  text-decoration: none;
+  color: rgb(44, 84, 242);
+}
+button:hover{
+background-color: yellow;
+} */
+
+.homeBtn {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 12px;
+  font-size: 16px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.homeBtn .span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.homeBtn .span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+
+.homeBtn:hover .span {
+  padding-left: 30px;
+}
+
+.homeBtn:hover .span:after {
+  opacity: 1;
+  left: 0;
+}
