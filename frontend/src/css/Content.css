@@ -1,7 +1,8 @@
 
 body {
   position: absolute;
-  background-image: url(/static/media/background5.48633b02.jpg);
+  background-image: url('https://i2.wp.com/currybazaar.co.uk/wp-content/uploads/revslider/home1/background5.jpg?fit=1902%2C926');
+  /* background-image: url(/static/media/background5.48633b02.jpg); */
   /* background-image:url(../assets/photodune-6761938-food-background-on-dark-slate-m1.jpg); */
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -90,4 +91,11 @@ background-color: yellow;
 .homeBtn:hover .span:after {
   opacity: 1;
   left: 0;
+}
+
+.backDiv{
+  display: inline-block;
+}
+.backDiv .homeBtn{
+  margin: 1%;
 }

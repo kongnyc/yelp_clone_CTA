@@ -35,10 +35,10 @@ const handleLogOut=()=>{
 }
 
         return (
-            <div>
-             <button className="homeBTN" onClick={handleLogOut}><a href="/">Back to Home</a></button>
-             <button className="resultBTN"><a href="/results">Back Results</a></button>
-            <h1>store info</h1>
+            <div className="backDiv">
+             <button className="homeBtn" onClick={handleLogOut}><a className="span" href="/">Back to Home</a></button>
+             <button className="homeBtn"><a className="span" href="/results">Back to Results</a></button>
+            <h1>Store Info</h1>
                 <Display store={store} category={category}/>
             </div>
         )

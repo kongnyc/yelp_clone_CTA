@@ -26,6 +26,7 @@ const Display =({category,store})=> {
         return (
             <div>
                 {nameDisplay()}
+                <br></br>
                 {detailDisplay()}
                 <Comment id={store.id}/>
             </div>
