@@ -10,8 +10,8 @@ DROP TABLE if EXISTS Posts;
 
 CREATE TABLE Stores (
     id SERIAL PRIMARY KEY,
-    name VARCHAR UNIQUE,
-    address VARCHAR
+    name VARCHAR,
+    address VARCHAR UNIQUE
 );
 
 CREATE TABLE Types (

@@ -52,11 +52,11 @@ const pullStoresByAddress = async (req,res,next)=>{
 const createYelpStore = async (req, res, next)=>{
     // res.json("hello")
     try {
-        await db.none('INSERT INTO Stores(name, address) VALUES(${name}, ${address})', req.body)
+       let newStore = await db.one(`INSERT INTO Stores(name, address) VALUES($1, $2) RETURNING *`, [req.body.name, req.body.address])
         res.status(200).json({
             status:'success',
             message:'create new store account',
-            payload:req.body
+            payload:newStore
         })
     } catch (error) {
         res.status(400).json({
