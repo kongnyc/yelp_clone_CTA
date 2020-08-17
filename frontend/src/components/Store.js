@@ -33,7 +33,6 @@ const handleLogOut=()=>{
     setCategory([])
     sessionStorage.removeItem("searchTerm")
 }
-
         return (
             <div className="backDiv">
              <button className="homeBtn" onClick={handleLogOut}><a className="span" href="/">Back to Home</a></button>

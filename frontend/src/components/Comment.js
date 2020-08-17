@@ -69,15 +69,15 @@ const handleLogin= async(e)=>{
             </form>
             )
         } else {
-            return (
-                <form className="loginForm" onSubmit={handleLogin}>
-                    <label>Account: </label>
-                    <input placeholder="username" name="username" {...userObj} required/>
-                    <label>Password: </label>
-                     <input type="password" placeholder="password" name="password"  minLength="8" {...passwordObj} required />
-                    <button type="Submit">Login</button> 
-                </form>
-            )
+            // return (
+            //     <form className="loginForm" onSubmit={handleLogin}>
+            //         <label>Account: </label>
+            //         <input placeholder="username" name="username" {...userObj} required/>
+            //         <label>Password: </label>
+            //          <input type="password" placeholder="password" name="password"  minLength="8" {...passwordObj} required />
+            //         <button type="Submit">Login</button> 
+            //     </form>
+            // )
         }
     }
 
